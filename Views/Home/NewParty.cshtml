@@ -1,0 +1,74 @@
+@model Party
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    button{
+        height: 30px;
+        width: 100px;
+    }
+    .mini-wrap{
+        margin-left: 900px;
+        display:inline-block;
+    }
+</style>
+</head>
+<body>
+    <div class = wrapper>
+        <h1>Dojo Activity Center</h1>
+        <br>
+        <div class="mini-wrap">        
+        <a href="/dashboard"><button type="submit" class="btn btn-outline-info">Dashboard</button></a>&nbsp;    
+        <a href="/logout"><button type="submit" class="btn btn-outline-info">Logout</button></a> 
+        </div>
+        <hr>
+        <h3>Create an Activity</h3>
+        <br>
+        <form action= "/party" method ="Post">
+            <div class="form-group">
+            <label for="PartyName">Title:</label>
+            <input type="text" class="form-control" name="PartyName" aria-describedby="PartyName" placeholder="Please enter the name of your activity.">
+            <span asp-validation-for="PartyName"></span>
+            </div>
+            <div class="form-group">
+            <label for="PartyDate">Date and Time:</label>
+            <input type="datetime-local" class="form-control" name="PartyDate" placeholder="Please enter the date of your activity.">
+            <span asp-validation-for="PartyDate"></span>
+            </div>
+            <div class="form-group">
+            <label for="Duration">Duration:</label>
+            <input type="number" class="form-control" name="Duration" placeholder="Please enter a the duration of your activity.">
+            <span asp-validation-for="Duration"></span>
+            </div>
+            <div class="form-group">
+            <label for="TimeFormat">Time Format:</label>
+                <select name = "TimeFormat">
+                    <option value=""></option>
+                    <option value="Minutes">Minutes</option>
+                    <option value="Hours">Hours</option>
+                    <option value="Days">Days</option>
+                </select>
+                <span asp-validation-for="TimeFormat"></span>
+                </div>
+            <div class="form-group">
+            <label for="Description" >Description:&nbsp;</label>
+            <textarea name="Description">
+            </textarea>
+            <span asp-validation-for="Description"></span>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-outline-info">Create Activity</button>
+            </form>
+        </div>
+</body>
+</html>

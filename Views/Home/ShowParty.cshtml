@@ -1,0 +1,56 @@
+@model Party
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome to the Wedding Planner!</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    table th,table td
+    {
+        width:100px;
+        }
+    .mini-wrap{
+        margin-left: 900px;
+        display:inline-block;
+    }
+</style>
+</head>
+<body>
+    <div class = wrapper>
+        <h1>Dojo Activity Center</h1>  
+        <div class="mini-wrap">        
+        <a href="/dashboard"><button type="submit" class="btn btn-outline-info">Dashboard</button></a>&nbsp;    
+        <a href="join/{PartyId}"><button type="submit" class="btn btn-outline-info">Join?</button></a>&nbsp;   
+        <a href="/logout"><button type="submit" class="btn btn-outline-info">Logout</button></a> 
+        </div>
+        <hr>
+        <h1>@Model.PartyName</h1>
+        <br>
+
+        <br>
+        <h2>Event Coordinator: @Model.Planner.Name</h2>
+        <br>
+        <h3>Date & Time: @Model.PartyDate</h3>
+        <br>
+        <h3>Duration: @Model.Duration @Model.TimeFormat</h3>
+        <br>
+        <h3>Description: @Model.Description</h3>
+        <br>
+        <br>
+        <h3>Participants:<h3>
+        <ul>
+            @foreach (Join j in Model.AttendingUsers)
+            {
+                <li>@j.Joiner.Name</li>   
+            }
+        </ul>
+    </div>
+</body>
+</html>
